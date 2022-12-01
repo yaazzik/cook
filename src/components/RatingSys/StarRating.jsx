@@ -4,13 +4,11 @@ import styles from "./StarRating.css"
 
 const createArray = length => [...Array(length)]
 
-const StarRating = ( {totalStars = 5 }) => {
-  const [selectedStars, setSelectedStars] = useState(0)
+const StarRating = ( {totalStars = 5, selectedStars = 0 } ) => {
   return (
-    <div className="starRating" style={styles}>
+    <div>
       {createArray(totalStars).map((n, i) =>
         <Star
-          onSelect={() => setSelectedStars(i+1)}
           selected={selectedStars > i}
           key={i}
         />)}
