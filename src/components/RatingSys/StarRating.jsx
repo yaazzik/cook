@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Star from "./Star";
-import styles from "./StarRating.css"
 
 const createArray = length => [...Array(length)]
 
-const StarRating = ( {totalStars = 5, selectedStars = 0 } ) => {
+const StarRating = ( {totalStars = 5, selectedStars = 0 , onRate = f => f}) => {
+
   return (
     <div>
       {createArray(totalStars).map((n, i) =>
         <Star
           selected={selectedStars > i}
           key={i}
+          onSelect={() => onRate(i + 1)}
         />)}
       <p>{selectedStars} of {totalStars} stars</p>
     </div>
